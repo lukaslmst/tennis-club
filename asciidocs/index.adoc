@@ -1,4 +1,4 @@
-= Informationen
+= tennis club
 
 ifndef::imagesdir[:imagesdir: images]
 //:toc-placement!:  // prevents the generation of the doc at this position, so it can be printed afterwards
@@ -8,9 +8,56 @@ ifndef::imagesdir[:imagesdir: images]
 :toc: left
 :stylesdir: style
 
-== Pflichtenheft
-https://github.com/2223-4bhitm-itp/2223-4bhitm-project-lehrplan/blob/main/asciidocs/pflichtenheft.adoc[Pflichtenheft]
+== description
+In this small application it should be possible to start a tennis game.
+A game always involves two players and takes place on a specific tennis court that is noted.
+There should also be a score counter that keeps track of the score.
+
+In addition, as a player, I should be able to reserve a specific tennis court
+
+== ERD
+
+[plantuml, ERD, png]
+----
+
+@startuml
+
+left to right direction
 
 
 
+class Player
+class Booking
+class Match {
+
+-score1: int
+-score2: int
+
+}
+
+class Player {
+-name: String
+
+}
+class Booking {
+-date: LocalDate
+-durration: LocalTime
+}
+
+class TennisCourt{
+-location: String
+-bookingPrice: double
+}
+
+
+Player "*" -- "*" TennisCourt
+(Player, TennisCourt) .. Booking
+
+Player "*" --> "1" Match : Player1 >
+Player "*" --> "1" Match : Player2 >
+
+Match --> TennisCourt
+
+@enduml
+----
 
