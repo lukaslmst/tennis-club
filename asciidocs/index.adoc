@@ -13,7 +13,7 @@ In this small application it should be possible to start a tennis game.
 A game always involves two players and takes place on a specific tennis court that is noted.
 There should also be a score counter that keeps track of the score.
 
-In addition, as a player, I should be able to reserve a specific tennis court
+In addition, as a player, I should be able to reserve a specific tennis court.
 
 == ERD
 
