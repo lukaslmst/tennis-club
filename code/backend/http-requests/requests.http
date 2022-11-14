@@ -1,4 +1,10 @@
-GET http://localhost:8080/
+GET http://localhost:8080/api/player
 
 ###
+POST http://localhost:8080/api/player
+Content-Type: application/json
 
+{
+  "firstname": "Lukas",
+  "lastname": "Lummerstorfer"
+}
