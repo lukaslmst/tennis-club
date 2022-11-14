@@ -17,47 +17,4 @@ In addition, as a player, I should be able to reserve a specific tennis court.
 
 == ERD
 
-[plantuml, ERD, png]
-----
-
-@startuml
-
-left to right direction
-
-
-
-class Player
-class Booking
-class Match {
-
--score1: int
--score2: int
-
-}
-
-class Player {
--name: String
-
-}
-class Booking {
--date: LocalDate
--durration: LocalTime
-}
-
-class TennisCourt{
--location: String
--bookingPrice: double
-}
-
-
-Player "*" -- "*" TennisCourt
-(Player, TennisCourt) .. Booking
-
-Player "*" --> "1" Match : Player1 >
-Player "*" --> "1" Match : Player2 >
-
-Match --> TennisCourt
-
-@enduml
-----
-
+https://www.plantuml.com/plantuml/png/XP0nJyCm48Lt_ufJ9a2uKZfcg2fW1AaI_GEkOreBnoUTpmD2_7Sk-109IxF4xzrtpq_U5tR4TKecXJS6Hg1ulZ2CaOBdYDd8vvCh1Gx9VGHIyO3u7lDPrOjZVu5FOspnIA4V86PMiMt2VArpXBRPJM60LoP94c0TFGEZOm6UqRlq94SnAf6RQwbxZ5FuIpw6d6Dvn4eiomczedg3FRNa0qKliIFMK_hPDbgfk-l0slctZ38tRNo_D6zXi_bj-cz_1rtVwPCCq4OzxAv3Mu5CimHOLTY7FDOfVGC0
