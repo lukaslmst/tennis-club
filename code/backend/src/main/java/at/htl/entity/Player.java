@@ -11,12 +11,9 @@ import javax.persistence.*;
                 name = "Player.findByFirstNameAndLastName",
                 query="select p from Player p where p.firstname like :FIRST and p.lastname like :LAST"
         )
-        @NamedQuery(
-                name = "Player.findById",
-                query="select p from Player p where p.playerId like :ID"
-        )
 })
 @Entity
+@Table(name = "PLAYER")
 public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
