@@ -4,7 +4,6 @@ import javax.persistence.*;
 
 
     @Entity
-    @Table(name = "MATCH")
     public class Match{
 
         @Id

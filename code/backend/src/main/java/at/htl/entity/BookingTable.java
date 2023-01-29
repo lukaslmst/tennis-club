@@ -6,8 +6,7 @@ import java.util.Date;
 
 
 @Entity
-@Table(name = "Booking")
-public class    Booking{
+public class BookingTable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,20 +19,20 @@ public class    Booking{
     @Column
     private Date dateOfReservation;
 
-    @OneToOne
+    @ManyToOne
     private TennisCourt tennisCourtToBook;
 
-    @OneToOne
+    @ManyToOne
     private Player playerWhoBooked;
 
     @Column
     private double price;
 
-    public Booking() {
+    public BookingTable() {
     }
 
 
-    public Booking(TennisCourt tennisCourtToBook, Player playerWhoBooked, double price) {
+    public BookingTable(TennisCourt tennisCourtToBook, Player playerWhoBooked, double price) {
         this.tennisCourtToBook = tennisCourtToBook;
         this.playerWhoBooked = playerWhoBooked;
         this.price = price;

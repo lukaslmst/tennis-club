@@ -3,7 +3,6 @@ package at.htl.entity;
 import javax.persistence.*;
 
     @Entity
-    @Table(name = "PLAYER")
     public class Player {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)

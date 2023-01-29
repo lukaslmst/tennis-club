@@ -11,5 +11,8 @@ import java.util.List;
 
 @ApplicationScoped
 public class PlayerRepository implements PanacheRepository<Player> {
+    public List<Player> findByFirstnameAndLastname(String firstName, String lastName) {
+        return find("firstname = ?1 and lastname = ?2", firstName, lastName).list();
+    }
 }
 

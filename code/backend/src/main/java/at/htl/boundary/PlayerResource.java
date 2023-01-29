@@ -5,11 +5,7 @@ import at.htl.control.PlayerRepository;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriInfo;
-import java.net.URI;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -18,7 +14,7 @@ import org.jboss.logging.Logger;
 
 
 @Path("/player")
-public class PlayerRessource {
+public class PlayerResource {
     @Inject
     Logger logger;
 
@@ -30,7 +26,8 @@ public class PlayerRessource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Player> findAll(){
-        return playerRepository.findAll();
+
+        return playerRepository.listAll();
     };
 
     @GET
@@ -55,21 +52,14 @@ public class PlayerRessource {
     @POST
     @Transactional
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response create(Player player, @Context UriInfo uriInfo){
-        Player saved = playerRepository.save(player);
-        logger.info(saved.getLastname() + " saved");
-        URI location = uriInfo
-                .getAbsolutePathBuilder()
-                .path(String.valueOf(saved.getPlayerId()))
-                .build();
-        return Response.created(location).build();
+    public void create(Player player){
+       playerRepository.persist(player);
     }
 
     @PATCH
     @Consumes(MediaType.TEXT_PLAIN)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response update(String firstName) {
-
+    public void update(String firstName) {
         logger.info(players);
         logger.info(firstName);
         Player foundPlayer = players
@@ -78,18 +68,14 @@ public class PlayerRessource {
                 .findFirst()
                 .get();
         logger.info(foundPlayer.getFirstname());
-        foundPlayer.setFirstname("updated");
-        return Response.ok(foundPlayer).build();
+        foundPlayer.setFirstname(firstName);
     }
 
+
     @DELETE
-    @Path("{playerId}")
     @Transactional
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response delete(Player player) {
-        if (players.size() > 0) {
-            players.remove(0);
-        }
-        return Response.noContent().build();
+    public void delete(Player player) {
+    playerRepository.delete(player);
     }
 }
